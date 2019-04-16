@@ -72,13 +72,11 @@ def build_dictionary(body_arr, n):
         tokens = tokens + tokenizer.tokenize(tweet)
 
     # throw out unwanted tokens
+    target_words = ['http', 'https', '@', 'RT', '&amp', '#', 't.co']
     for tok in tokens:
-        if 'http' in tok:
-            while tok in tokens: tokens.remove(tok)
-        elif '@' in tok:
-            while tok in tokens: tokens.remove(tok)
-        elif 'RT' in tok:
-            while tok in tokens: tokens.remove(tok)
+        for target in target_words:
+            if target in tok.lower():
+                while tok in tokens: tokens.remove(tok)
 
     token_dict = {}
 
@@ -110,7 +108,7 @@ def gen_tweet(dictionary):
     first_word = dictionary['I'][randint(0, len(dictionary['I']) - 1)]
     sentence.append(first_word)
     # 100 tokens
-    for i in range(1, 30):
+    for i in range(1, 100):
         previous_word = sentence[i - 1]
         second_word = previous_word.rpartition(' ')[2]
         new_word = dictionary[second_word][randint(0, len(dictionary[second_word]) - 1)]
@@ -118,7 +116,7 @@ def gen_tweet(dictionary):
 
     for i in range(len(sentence)):
         tweet += sentence[i] + ' '
-    return tweet
+    return 'I ' + tweet
 
 ##################################Tweets the completed string out using our twitter account##############################
 
@@ -189,10 +187,21 @@ Stay Hungry. Stay Foolish.
 
 Thank you all very much.'''
 
-samp_array = [samp_text]
+#samp_array = [samp_text]
 
-samp_dictionary = build_dictionary(samp_array, 4) #change this number for varying acuracy (2 - 4 reccomended)
-print(samp_dictionary)
+#samp_dictionary = build_dictionary(samp_array, 4) #change this number for varying acuracy (2 - 4 reccomended)
+#print(samp_dictionary)
 
-samp_tweet = gen_tweet(samp_dictionary)
-print('I '+ samp_tweet)
+# samp_tweet = gen_tweet(samp_dictionary)
+# print('I '+ samp_tweet)
+
+samp_array = get_tweets(1, 'cubs')
+print(samp_array)
+samp_dict = build_dictionary(samp_array, 2)
+print(samp_dict)
+
+samp_text = gen_tweet(samp_dict)
+print(samp_text)
+
+
+
