@@ -3,6 +3,13 @@
 
 # author: NLP Group 11
 
+# MATLAB STUFF # 
+# matlab.engine.start_matlab();
+# matlab.engine.find_matlab();
+# eng=matlab.engine.connect_matlab();
+# import matlab.engine;
+
+
 ## import statements
 
 import nltk
