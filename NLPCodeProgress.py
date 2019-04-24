@@ -12,6 +12,7 @@ from nltk.tokenize.toktok import ToktokTokenizer
 from random import randint
 
 ######################FUNCTION THAT GETS TWEETS FROM SPECIFIED USER OR HASHTAG#################################################
+## PORTION 1 ##
 
 # returns array of tweets to be put into a dictionary
 def get_tweets(user, query):
@@ -56,6 +57,7 @@ def get_tweets(user, query):
 
 
 ################################BUILDS TOKEN DICTIONARY TO BE USED FOR SENTENCE GENERATION#########################################
+## PORTION 2 ##
 
 #returns dictionary. This is still being worked on to filter out parts of tweets that we do not want to tokenize.
 def build_dictionary(body_arr, n):
@@ -119,6 +121,7 @@ def gen_tweet(dictionary):
     return 'I ' + tweet
 
 ##################################Tweets the completed string out using our twitter account##############################
+## PORTION 2 ##
 
 def tweet_generated(gen_tweet):
     credentials = {}
