@@ -81,10 +81,8 @@ def build_dictionary(body_arr, n):
         raw_tokens = raw_tokens + tokenizer.tokenize(tweet)
 
 
-
     tokens = [word for word in raw_tokens if not ('http' in word or '#' in word or '@' in word or 'RT' in word \
-                                                  or '&amp' in word)]
-
+                                                  or '&amp' in word or 'U+' in word)]
 
     token_dict = {}
 
@@ -163,7 +161,4 @@ def final_tweet(user, userOr):
     gen_dict = build_dictionary(tweets, 3)
     generated_tweet = gen_tweet(gen_dict)
     final_tweet = process_tweet(generated_tweet)
-    return final_tweet
-
-
-
+    return final_tweet.encode('ascii', 'ignore')

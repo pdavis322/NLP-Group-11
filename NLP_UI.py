@@ -13,7 +13,8 @@ sentence = ''
 def generate():
     subject = E1.get()
     global sentence
-    sentence = fl.final_tweet(var2, subject)
+    sentence = fl.final_tweet(var2.get(), subject)
+    text.delete('1.0', END)
     text.insert(INSERT, sentence)
 
 def tweet():
@@ -28,6 +29,7 @@ text = tkinter.Text(gui)
 L1 = tkinter.Label(gui, text="User: ")
 
 var2 = IntVar()
+
 
 def user_or():
     print('fuck')
