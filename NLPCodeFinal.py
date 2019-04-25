@@ -81,8 +81,6 @@ def build_dictionary(body_arr, n):
         raw_tokens = raw_tokens + tokenizer.tokenize(tweet)
 
 
-    # throw out unwanted tokens
-    target_words = ['http', 'https', '@', 'RT', '&amp', '#', 't.co']
 
     tokens = [word for word in raw_tokens if not ('http' in word or '#' in word or '@' in word or 'RT' in word \
                                                   or '&amp' in word)]
@@ -166,17 +164,6 @@ def final_tweet(user, userOr):
     generated_tweet = gen_tweet(gen_dict)
     final_tweet = process_tweet(generated_tweet)
     return final_tweet
-################################TESTING################################
 
-# steve jobs commencement speech for testing
-
-
-#samp_array = [samp_text]
-
-#samp_dictionary = build_dictionary(samp_array, 4) #change this number for varying acuracy (2 - 4 reccomended)
-#print(samp_dictionary)
-
- #samp_tweet = gen_tweet(samp_dictionary)
-# print('I '+ samp_tweet)
 
 
