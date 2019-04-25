@@ -119,7 +119,10 @@ def gen_tweet(dictionary):
     tweet = ''
     sentence = []
 
-    first_word = dictionary['I'][randint(0, len(dictionary['I']) - 1)]
+    if 'I' in dictionary:
+        first_word = dictionary['I'][randint(0, len(dictionary['I']) - 1)]
+    else: 
+        first_word = dictionary['the'][randint(0, len(dictionary['the']) - 1)]
     sentence.append(first_word)
     # 100 tokens
     for i in range(1, 100):
@@ -152,6 +155,11 @@ def tweet_generated(gen_tweet):
     api.update_status(gen_tweet)
 
 
+def process_tweet(tweet):
+    tweet = tweet.replace(' \' ', '\'').replace(' ’ ', '’').replace(' , ', ', ').replace(' ! ', '! ')
+    return tweet
+    
+
 ################################TESTING################################
 
 # steve jobs commencement speech for testing
@@ -165,10 +173,4 @@ def tweet_generated(gen_tweet):
  #samp_tweet = gen_tweet(samp_dictionary)
 # print('I '+ samp_tweet)
 
-samp_array = get_tweets(0, 'UNICEF')
-# print(samp_array)
-samp_dict = build_dictionary(samp_array, 2)
-# print(samp_dict)
-#
-# samp_text = gen_tweet(samp_dict)
-# print(samp_text)
+
