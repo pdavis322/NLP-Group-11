@@ -82,7 +82,10 @@ def build_dictionary(body_arr, n):
 
 
     tokens = [word for word in raw_tokens if not ('http' in word or '#' in word or '@' in word or 'RT' in word \
-                                                  or '&amp' in word or 'U+' in word)]
+
+                                                  or '&amp' in word or 'U+' in word or '&amp' in word or ':' in word)]
+
+
 
     token_dict = {}
 
@@ -151,7 +154,7 @@ def tweet_generated(gen_tweet):
 
 def process_tweet(tweet):
     tweet = tweet.replace(' \' ', '\'').replace(' ’ ', '’').replace(' , ', ', ').replace(' ! ', '! ')
-    return tweet
+    return tweet + '.'
     
 
 
